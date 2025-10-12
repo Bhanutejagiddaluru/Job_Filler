@@ -1,4 +1,4 @@
-# Job Filler — Chrome Extension (Automate Your Job Application Forms) [Free](1) [Open Source](2)
+# Job Filler — Chrome Extension (Automate Your Job Application Forms) [Free](1), [Open Source](2)
 
 
 ### 🚀 Story: Why I Built This
