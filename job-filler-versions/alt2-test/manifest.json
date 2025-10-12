@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Alt+2 Test",
+  "version": "1.0.0",
+  "description": "Detects Alt+2 and shows a banner on any page.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "alt2-test": {
+      "suggested_key": { "default": "Alt+2" },
+      "description": "Detect Alt+2 and show test banner"
+    }
+  },
+  "action": {
+    "default_title": "Alt+2 Test"
+  }
+}

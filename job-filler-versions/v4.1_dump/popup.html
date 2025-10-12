@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Job Filler</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 12px; width: 340px; }
+    h1 { margin: 0 0 10px; font-size: 16px; }
+    h2 { margin: 14px 0 6px; font-size: 13px; color: #111827; }
+    label { display: block; font-size: 12px; margin-top: 8px; }
+    input, textarea, select {
+      width: 100%; box-sizing: border-box; padding: 6px; font-size: 13px;
+      border: 1px solid #ccc; border-radius: 6px; background: #fff;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    button {
+      margin-top: 10px; width: 100%; padding: 9px; border: 0; border-radius: 8px;
+      background: #111827; color: #fff; cursor: pointer; font-weight: 600;
+    }
+    .secondary { background: #334155; }
+    .hint { font-size: 11px; color: #666; margin-top: 6px; }
+    .q { font-size: 12px; color: #111827; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Job Filler</h1>
+
+  <h2>Profile</h2>
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input id="name" placeholder="Your name" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input id="email" placeholder="you@example.com" />
+    </div>
+  </div>
+  <label>Phone</label>
+  <input id="phone" placeholder="+1 (555) 555-5555" />
+  <label>Address</label>
+  <input id="address" placeholder="123 Main St, City, ST" />
+  <label>LinkedIn URL</label>
+  <input id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+  <label>GitHub URL</label>
+  <input id="github" placeholder="https://github.com/yourhandle" />
+  <label>Pasteable Summary (optional)</label>
+  <textarea id="summary" rows="3" placeholder="Short summary to paste..."></textarea>
+
+  <h2>Compliance (Yes/No/Select)</h2>
+
+  <div class="q">Authorized to work in the U.S.?</div>
+  <select id="workAuthUS">
+    <option value="">(skip)</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <div class="q">Legally able to work where job is located?</div>
+  <select id="legalWorkCountry">
+    <option value="">(skip)</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <div class="q">Age category</div>
+  <select id="ageCategory">
+    <option value="">(skip)</option>
+    <option>18 years of age and Over</option>
+    <option>Under 18</option>
+  </select>
+
+  <div class="q">Can provide work authorization within 3 days of hire?</div>
+  <select id="provideAuth3Days">
+    <option value="">(skip)</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <div class="q">Will you now or in the future require sponsorship (U.S.)?</div>
+  <select id="needSponsorship">
+    <option value="">(skip)</option>
+    <option>No</option>
+    <option>Yes</option>
+  </select>
+
+  <div class="q">Do you certify you meet all minimum qualifications?</div>
+  <select id="meetsMinQuals">
+    <option value="">(skip)</option>
+    <option>Yes</option>
+    <option>No</option>
+  </select>
+
+  <button id="saveBtn">Save</button>
+  <button id="fillBtn" class="secondary">Fill Application On This Page</button>
+
+  <div class="hint">
+    Alt+2 fills instantly. If hotkey isn’t set: <code>chrome://extensions/shortcuts</code>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

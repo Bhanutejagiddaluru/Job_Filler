@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Job Filler</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 12px; width: 320px; }
+    h1 { margin: 0 0 8px; font-size: 16px; }
+    label { display: block; font-size: 12px; margin-top: 8px; }
+    input, textarea {
+      width: 100%; box-sizing: border-box; padding: 6px; font-size: 13px;
+      border: 1px solid #ccc; border-radius: 6px; background: #fff;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    button {
+      margin-top: 10px; width: 100%; padding: 9px; border: 0; border-radius: 8px;
+      background: #111827; color: #fff; cursor: pointer; font-weight: 600;
+    }
+    .secondary { background: #334155; }
+    .hint { font-size: 11px; color: #666; margin-top: 6px; }
+  </style>
+</head>
+<body>
+  <h1>Job Filler</h1>
+
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input id="name" placeholder="Your name" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input id="email" placeholder="you@example.com" />
+    </div>
+  </div>
+
+  <label>Phone</label>
+  <input id="phone" placeholder="+1 (555) 555-5555" />
+
+  <label>Address</label>
+  <input id="address" placeholder="123 Main St, City, ST" />
+
+  <label>LinkedIn URL</label>
+  <input id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+
+  <label>GitHub URL</label>
+  <input id="github" placeholder="https://github.com/yourhandle" />
+
+  <label>Pasteable Summary (optional)</label>
+  <textarea id="summary" rows="3" placeholder="Short summary to paste..."></textarea>
+
+  <button id="saveBtn">Save</button>
+  <button id="fillBtn" class="secondary">Fill Application On This Page</button>
+
+  <div class="hint">
+    Tip: Assign <b>Alt+2</b> here if not set yet → <code>chrome://extensions/shortcuts</code>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

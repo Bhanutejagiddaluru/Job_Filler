@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Job Filler",
+  "version": "1.0.0",
+  "description": "A simple Chrome extension to save data and paste today's date using Alt+2.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "paste-date": {
+      "suggested_key": {
+        "default": "Alt+2"
+      },
+      "description": "Paste today's date at the cursor"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "checkbox_fill",
+  "version": "1.0.5",
+  "description": "Alt+2 selects 'Yes' for two fixed Workday questions (dropdowns or native selects), safely scoped.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "fill-fixed": {
+      "suggested_key": { "default": "Alt+2" },
+      "description": "Fill two fixed questions with Yes"
+    }
+  },
+  "action": { "default_title": "checkbox_fill" }
+}

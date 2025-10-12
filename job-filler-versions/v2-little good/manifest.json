@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Job Filler",
+  "version": "1.0.1",
+  "description": "Save data and fill job applications. Alt+2 pastes today's date.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "paste-date": {
+      "suggested_key": { "default": "Alt+2" },
+      "description": "Paste today's date at the cursor"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ]
+}
