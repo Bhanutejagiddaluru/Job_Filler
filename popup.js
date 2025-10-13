@@ -1,3 +1,12 @@
+/* ===============================
+   Job Filler - popup.js (superset)
+   - Preserves all previous behavior
+   - Adds "Additional information (from YOU)" Text Q&A
+   - Keeps Choice Q&A (checkbox/radio/select)
+   - Fill button injects: defaults -> Text Q&A -> Choice Q&A
+================================= */
+
+// ---------- Element refs ----------
 const els = {
   // basics
   name: document.getElementById("name"),
@@ -8,13 +17,13 @@ const els = {
   github: document.getElementById("github"),
   summary: document.getElementById("summary"),
 
-  // text Q/A
+  // Additional information (TEXT Q&A)
   textQaList: document.getElementById("textQaList"),
   tqa_new_q: document.getElementById("tqa_new_q"),
   tqa_new_a: document.getElementById("tqa_new_a"),
   tqa_add: document.getElementById("tqa_add"),
 
-  // choice Q/A
+  // Choice Q&A (checkbox/radio/select)
   qaList: document.getElementById("qaList"),
   qa_new_q: document.getElementById("qa_new_q"),
   qa_new_a: document.getElementById("qa_new_a"),
@@ -25,83 +34,123 @@ const els = {
   fillBtn: document.getElementById("fillBtn"),
 };
 
+// ---------- State ----------
 let state = {
-  qaPairs: [],
-  textQaPairs: []
+  qaPairs: [],       // [{q,a}]
+  textQaPairs: []    // [{q,a}]
 };
 
-// ---------- renderers ----------
+// ---------- Storage (load/save) ----------
+function load() {
+  chrome.storage.local.get(
+    {
+      name: "", email: "", phone: "", address: "",
+      linkedin: "", github: "", summary: "",
+      qaPairs: [],
+      textQaPairs: []
+    },
+    (res) => {
+      els.name.value = res.name;
+      els.email.value = res.email;
+      els.phone.value = res.phone;
+      els.address.value = res.address;
+      els.linkedin.value = res.linkedin;
+      els.github.value = res.github;
+      els.summary.value = res.summary;
+
+      state.qaPairs = Array.isArray(res.qaPairs) ? deepCopyPairs(res.qaPairs) : [];
+      state.textQaPairs = Array.isArray(res.textQaPairs) ? deepCopyPairs(res.textQaPairs) : [];
+
+      renderChoiceQA();
+      renderTextQA();
+    }
+  );
+}
+
+function save() {
+  const sanitizedChoice = state.qaPairs.filter(x => x && x.q?.trim() && x.a?.trim());
+  const sanitizedText = state.textQaPairs.filter(x => x && x.q?.trim() && x.a?.trim());
+
+  chrome.storage.local.set(
+    {
+      name: els.name.value.trim(),
+      email: els.email.value.trim(),
+      phone: els.phone.value.trim(),
+      address: els.address.value.trim(),
+      linkedin: els.linkedin.value.trim(),
+      github: els.github.value.trim(),
+      summary: els.summary.value,
+      qaPairs: sanitizedChoice,
+      textQaPairs: sanitizedText
+    },
+    () => {
+      els.saveBtn.textContent = "Saved ✓";
+      setTimeout(() => (els.saveBtn.textContent = "Save"), 900);
+    }
+  );
+}
+
+// ---------- Rendering (Q&A editors) ----------
 function renderChoiceQA() {
   els.qaList.innerHTML = "";
   state.qaPairs.forEach((item, idx) => {
-    const row = document.createElement("div");
-    row.className = "qa-row";
-    row.innerHTML = `
-      <div>
-        <label>Question</label>
-        <input value="${item.q || ""}" data-idx="${idx}" data-k="q" />
-      </div>
-      <div>
-        <label>Answer</label>
-        <input value="${item.a || ""}" data-idx="${idx}" data-k="a" />
-      </div>
-      <button class="danger" data-idx="${idx}">Remove</button>
-    `;
-    els.qaList.appendChild(row);
+    els.qaList.appendChild(makeQaRow("choice", idx, item.q || "", item.a || ""));
   });
-
-  els.qaList.querySelectorAll("input").forEach(inp => {
-    inp.addEventListener("input", (e) => {
-      const i = Number(e.target.dataset.idx);
-      const k = e.target.dataset.k;
-      state.qaPairs[i][k] = e.target.value;
-    });
-  });
-  els.qaList.querySelectorAll(".danger").forEach(btn => {
-    btn.addEventListener("click", (e) => {
-      const i = Number(e.target.dataset.idx);
-      state.qaPairs.splice(i, 1);
-      renderChoiceQA();
-    });
-  });
+  wireRowHandlers("choice");
 }
 
 function renderTextQA() {
   els.textQaList.innerHTML = "";
   state.textQaPairs.forEach((item, idx) => {
-    const row = document.createElement("div");
-    row.className = "qa-row";
-    row.innerHTML = `
-      <div>
-        <label>Question</label>
-        <input value="${item.q || ""}" data-idx="${idx}" data-k="q" />
-      </div>
-      <div>
-        <label>Answer</label>
-        <input value="${item.a || ""}" data-idx="${idx}" data-k="a" />
-      </div>
-      <button class="danger" data-idx="${idx}">Remove</button>
-    `;
-    els.textQaList.appendChild(row);
+    els.textQaList.appendChild(makeQaRow("text", idx, item.q || "", item.a || ""));
   });
+  wireRowHandlers("text");
+}
 
-  els.textQaList.querySelectorAll("input").forEach(inp => {
+function makeQaRow(kind, idx, qVal, aVal) {
+  const wrap = document.createElement("div");
+  wrap.className = "qa-row";
+  wrap.innerHTML = `
+    <div>
+      <label>Question</label>
+      <input value="${escapeHtmlAttr(qVal)}" data-kind="${kind}" data-idx="${idx}" data-k="q" />
+    </div>
+    <div>
+      <label>Answer</label>
+      <input value="${escapeHtmlAttr(aVal)}" data-kind="${kind}" data-idx="${idx}" data-k="a" />
+    </div>
+    <button class="danger" data-kind="${kind}" data-idx="${idx}">Remove</button>
+  `;
+  return wrap;
+}
+
+function wireRowHandlers(kind) {
+  const container = kind === "choice" ? els.qaList : els.textQaList;
+  container.querySelectorAll("input").forEach(inp => {
     inp.addEventListener("input", (e) => {
       const i = Number(e.target.dataset.idx);
       const k = e.target.dataset.k;
-      state.textQaPairs[i][k] = e.target.value;
+      if (kind === "choice") {
+        state.qaPairs[i][k] = e.target.value;
+      } else {
+        state.textQaPairs[i][k] = e.target.value;
+      }
     });
   });
-  els.textQaList.querySelectorAll(".danger").forEach(btn => {
+  container.querySelectorAll(".danger").forEach(btn => {
     btn.addEventListener("click", (e) => {
       const i = Number(e.target.dataset.idx);
-      state.textQaPairs.splice(i, 1);
-      renderTextQA();
+      if (kind === "choice") {
+        state.qaPairs.splice(i, 1);
+        renderChoiceQA();
+      } else {
+        state.textQaPairs.splice(i, 1);
+        renderTextQA();
+      }
     });
   });
 }
 
-// ---------- add handlers ----------
 function addChoiceQA() {
   const q = els.qa_new_q.value.trim();
   const a = els.qa_new_a.value.trim();
@@ -122,54 +171,16 @@ function addTextQA() {
   renderTextQA();
 }
 
-// ---------- storage ----------
-function load() {
-  chrome.storage.local.get(
-    {
-      name: "", email: "", phone: "", address: "",
-      linkedin: "", github: "", summary: "",
-      qaPairs: [],
-      textQaPairs: []
-    },
-    (res) => {
-      els.name.value = res.name;
-      els.email.value = res.email;
-      els.phone.value = res.phone;
-      els.address.value = res.address;
-      els.linkedin.value = res.linkedin;
-      els.github.value = res.github;
-      els.summary.value = res.summary;
-
-      state.qaPairs = Array.isArray(res.qaPairs) ? res.qaPairs : [];
-      renderChoiceQA();
-
-      state.textQaPairs = Array.isArray(res.textQaPairs) ? res.textQaPairs : [];
-      renderTextQA();
-    }
-  );
+// ---------- Small helpers ----------
+function escapeHtmlAttr(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+}
+function deepCopyPairs(arr) {
+  return arr.map(x => ({ q: x?.q || "", a: x?.a || "" }));
 }
 
-function save() {
-  chrome.storage.local.set(
-    {
-      name: els.name.value.trim(),
-      email: els.email.value.trim(),
-      phone: els.phone.value.trim(),
-      address: els.address.value.trim(),
-      linkedin: els.linkedin.value.trim(),
-      github: els.github.value.trim(),
-      summary: els.summary.value,
-      qaPairs: state.qaPairs.filter(x => x.q?.trim() && x.a?.trim()),
-      textQaPairs: state.textQaPairs.filter(x => x.q?.trim() && x.a?.trim())
-    },
-    () => {
-      els.saveBtn.textContent = "Saved ✓";
-      setTimeout(() => (els.saveBtn.textContent = "Save"), 900);
-    }
-  );
-}
-
-// ---------- fill trigger ----------
+// ---------- Filler functions injected into the page ----------
+// (1) Default text fields (Name/Email/Phone/Address/LinkedIn/GitHub/Summary)
 function pageFillFn_TEXT_ONLY_DEFAULTS(data) {
   const setReactSafe = (el, value) => {
     if (!el) return;
@@ -185,7 +196,7 @@ function pageFillFn_TEXT_ONLY_DEFAULTS(data) {
     const t = (el.type || "").toLowerCase();
     if (["button","submit","checkbox","radio","file","hidden"].includes(t)) return false;
     const r = el.getBoundingClientRect(), cs = getComputedStyle(el);
-    return r.width > 0 && r.height > 0 && cs.visibility !== "hidden";
+    return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none";
   });
 
   const find = (keys) =>
@@ -218,7 +229,7 @@ function pageFillFn_TEXT_ONLY_DEFAULTS(data) {
   if (data.summary)  setReactSafe(find(["summary","cover letter","description","bio","about"]), data.summary);
 }
 
-// user-defined text Q & A
+// (2) User-defined TEXT Q&A
 function pageFillFn_TEXT_QA_ONLY(textQaPairs) {
   (async function () {
     const sleep = (ms) => new Promise(r => setTimeout(r, ms));
@@ -268,7 +279,7 @@ function pageFillFn_TEXT_QA_ONLY(textQaPairs) {
         const text = toL(el.textContent || "");
         if (!text.includes(needle)) continue;
 
-        const hasTextControl = !!el.querySelector('input[type="text"], input:not([type]), input[type="email"], input[type="tel"], input[type="url"], input[type="search"], input[type="number"], textarea, [contenteditable=""], [contenteditable="true"]');
+        const hasTextControl = !!el.querySelector('input:not([type]), input[type="text"], input[type="email"], input[type="tel"], input[type="url"], input[type="search"], input[type="number"], textarea, [contenteditable=""], [contenteditable="true"]');
         if (!hasTextControl) continue;
 
         const rect = el.getBoundingClientRect();
@@ -290,7 +301,6 @@ function pageFillFn_TEXT_QA_ONLY(textQaPairs) {
         container
       );
 
-      // prefer larger visible inputs and textareas
       const scored = candidates.map(el => {
         const r = el.getBoundingClientRect();
         const area = (r?.width || 0) * (r?.height || 0);
@@ -333,51 +343,8 @@ function pageFillFn_TEXT_QA_ONLY(textQaPairs) {
   })();
 }
 
-async function fillOnPage() {
-  chrome.storage.local.get(
-    ["name","email","phone","address","linkedin","github","summary","qaPairs","textQaPairs"],
-    async (data) => {
-      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
-      if (!tab?.id) return;
-
-      // 1) default text fields (name/email/...)
-      await chrome.scripting.executeScript({
-        target: { tabId: tab.id, allFrames: true },
-        func: pageFillFn_TEXT_ONLY_DEFAULTS,
-        args: [data]
-      });
-
-      // 2) user-defined TEXT Q&A
-      await chrome.scripting.executeScript({
-        target: { tabId: tab.id, allFrames: true },
-        func: pageFillFn_TEXT_QA_ONLY,
-        args: [Array.isArray(data.textQaPairs) ? data.textQaPairs : []]
-      });
-
-      // 3) user-defined CHOICE Q&A (checkbox/radio/select)
-      await chrome.scripting.executeScript({
-        target: { tabId: tab.id, allFrames: true },
-        func: pageFillFn_CHOICES_ONLY,
-        args: [Array.isArray(data.qaPairs) ? data.qaPairs : []]
-      });
-
-      els.fillBtn.textContent = "Filled ✓";
-      setTimeout(() => (els.fillBtn.textContent = "Fill Application On This Page"), 1200);
-    }
-  );
-}
-
-// events
-els.saveBtn.addEventListener("click", save);
-els.fillBtn.addEventListener("click", fillOnPage);
-els.qa_add.addEventListener("click", addChoiceQA);
-els.tqa_add.addEventListener("click", addTextQA);
-document.addEventListener("DOMContentLoaded", load);
-
-// ============ import the CHOICE logic so popup-only fill also works ============
+// (3) User-defined CHOICE Q&A (checkbox/radio/select) – robust logic
 function pageFillFn_CHOICES_ONLY(QA) {
-  // (identical to background.js version; kept here so Fill button works without hotkey)
-  // -- trimmed for brevity in popup; the background copy is authoritative --
   (async function () {
     const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     const toL = (s) => (s || "").toLowerCase().replace(/\s+/g, " ").trim();
@@ -388,6 +355,7 @@ function pageFillFn_CHOICES_ONLY(QA) {
       const cs = getComputedStyle(el);
       return r.width > 0 && r.height > 0 && cs.visibility !== "hidden" && cs.display !== "none";
     };
+
     function* walkAllNodes(root = document) {
       yield root;
       const tw = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT);
@@ -405,10 +373,11 @@ function pageFillFn_CHOICES_ONLY(QA) {
       }
       return Array.from(new Set(out)).filter(visible);
     }
+
     function realClick(el) {
       if (!el) return;
-      ["pointerdown","mousedown","mouseup","click"].forEach(t =>
-        el.dispatchEvent(new MouseEvent(t, { bubbles: true, cancelable: true, view: window }))
+      ["pointerdown", "mousedown", "mouseup", "click"].forEach(type =>
+        el.dispatchEvent(new MouseEvent(type, { bubbles: true, cancelable: true, view: window }))
       );
     }
     function matchesAnswer(text, target) {
@@ -417,25 +386,53 @@ function pageFillFn_CHOICES_ONLY(QA) {
       if (b === "no" || b.startsWith("no"))  return a === "no"  || a.startsWith("no");
       return a === b || a.includes(b) || b.includes(a);
     }
+
     function findContainerStrict(question) {
       const needle = toL(question);
       if (!needle) return null;
       const candidates = queryAllDeep('fieldset, section, div, li, [role="group"], [role="radiogroup"], [data-automation-id]');
       let best = null, bestScore = -1;
+
       for (const el of candidates) {
         const text = toL(el.textContent || "");
         if (!text.includes(needle)) continue;
+
         const hasControl = !!el.querySelector(
           'select, input[type="radio"], input[type="checkbox"], [role="combobox"], [aria-haspopup="listbox"], [data-automation-id="selectBox"], [data-automation-id="select-selectedOption"]'
         );
         if (!hasControl) continue;
+
         const rect = el.getBoundingClientRect();
         const areaScore = rect ? Math.max(0, 200000 - (rect.width * rect.height)) / 50000 : 0;
+
         const score = 10 + areaScore;
         if (score > bestScore) { best = el; bestScore = score; }
       }
       return best;
     }
+
+    function readSelectedText(container) {
+      const sel = queryAllDeep('select', container)[0];
+      if (sel && sel.selectedIndex >= 0) {
+        const opt = sel.options[sel.selectedIndex];
+        if (opt) return (opt.text || opt.value || "").trim();
+      }
+      const checked = queryAllDeep('input[type="radio"]:checked, input[type="checkbox"]:checked', container)[0];
+      if (checked) {
+        let labelText = "";
+        if (checked.id) {
+          const lab = container.querySelector(`label[for="${CSS.escape(checked.id)}"]`);
+          if (lab?.textContent) labelText = lab.textContent.trim();
+        }
+        if (!labelText) {
+          const lab = checked.closest('label');
+          if (lab?.textContent) labelText = lab.textContent.trim();
+        }
+        return labelText || "checked";
+      }
+      return "";
+    }
+
     function setNativeSelect(container, targetText) {
       const sel = queryAllDeep('select', container)[0];
       if (!sel) return false;
@@ -450,6 +447,7 @@ function pageFillFn_CHOICES_ONLY(QA) {
       sel.dispatchEvent(new Event("input", { bubbles: true }));
       return true;
     }
+
     function setRadioOrCheckbox(container, targetText) {
       const radios = queryAllDeep('input[type="radio"]', container);
       if (radios.length) {
@@ -487,25 +485,88 @@ function pageFillFn_CHOICES_ONLY(QA) {
       }
       return false;
     }
+
     async function chooseValue(container, targetText) {
-      if (setNativeSelect(container, targetText)) return true;
-      if (setRadioOrCheckbox(container, targetText)) return true;
+      if (setNativeSelect(container, targetText)) { return true; }
+      if (setRadioOrCheckbox(container, targetText)) { return true; }
       return false;
     }
 
     if (!Array.isArray(QA) || QA.length === 0) return;
 
+    const results = [];
     for (const pair of QA) {
       const q = pair?.q || pair?.[0];
       const ans = pair?.a || pair?.[1];
-      if (!q || !ans) continue;
+      if (!q || !ans) { results.push("—"); continue; }
 
       const c = findContainerStrict(q);
-      if (!c) continue;
+      if (!c) { results.push(`${q.slice(0, 22)}… ✗`); continue; }
 
       c.scrollIntoView({ block: "center" });
-      await sleep(60);
-      await chooseValue(c, ans);
+      await sleep(80);
+
+      const ok = await chooseValue(c, ans);
+      results.push(`${q.slice(0, 22)}… ${ok ? "✓" : "✗"}`);
+      await sleep(120);
     }
+
+    // tiny toast
+    try {
+      const id = "job-filler-toast";
+      document.getElementById(id)?.remove();
+      const t = document.createElement("div");
+      t.id = id; t.textContent = results.join("  ");
+      Object.assign(t.style, {
+        position: "fixed", top: "12px", right: "12px", zIndex: 2147483647,
+        background: "#111827", color: "#fff", padding: "8px 12px",
+        borderRadius: "8px", font: "12px system-ui", boxShadow: "0 4px 12px rgba(0,0,0,.25)"
+      });
+      document.body.appendChild(t);
+      setTimeout(() => t.remove(), 1800);
+    } catch {}
   })();
 }
+
+// ---------- Fill button orchestration ----------
+// Runs: defaults -> TEXT Q&A -> CHOICE Q&A (same order as background listener)
+async function fillOnPage() {
+  chrome.storage.local.get(
+    ["name","email","phone","address","linkedin","github","summary","qaPairs","textQaPairs"],
+    async (data) => {
+      const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+      if (!tab?.id) return;
+
+      // 1) default text inputs
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        func: pageFillFn_TEXT_ONLY_DEFAULTS,
+        args: [data]
+      });
+
+      // 2) user-defined TEXT Q&A
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        func: pageFillFn_TEXT_QA_ONLY,
+        args: [Array.isArray(data.textQaPairs) ? data.textQaPairs : []]
+      });
+
+      // 3) user-defined CHOICE Q&A
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id, allFrames: true },
+        func: pageFillFn_CHOICES_ONLY,
+        args: [Array.isArray(data.qaPairs) ? data.qaPairs : []]
+      });
+
+      els.fillBtn.textContent = "Filled ✓";
+      setTimeout(() => (els.fillBtn.textContent = "Fill Application On This Page"), 1200);
+    }
+  );
+}
+
+// ---------- Event wiring ----------
+els.saveBtn.addEventListener("click", save);
+els.fillBtn.addEventListener("click", fillOnPage);
+els.qa_add.addEventListener("click", addChoiceQA);
+els.tqa_add.addEventListener("click", addTextQA);
+document.addEventListener("DOMContentLoaded", load);
