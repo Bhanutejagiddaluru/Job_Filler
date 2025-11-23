@@ -1,0 +1,1035 @@
+{
+  "address": "",
+  "email": "bgiddalu@gmail.com",
+  "github": "",
+  "hintPos": {
+    "choice_h1": 0,
+    "choice_h10": 46,
+    "choice_h11": 22,
+    "choice_h12": 30,
+    "choice_h13": 154,
+    "choice_h14": 141,
+    "choice_h15": 148,
+    "choice_h16": 161,
+    "choice_h2": 53,
+    "choice_h3": 64,
+    "choice_h4": 86,
+    "choice_h5": 36,
+    "choice_h6": 103,
+    "choice_h7": 111,
+    "choice_h8": 126,
+    "choice_h9": 137
+  },
+  "linkedin": "https://www.linkedin.com/in/giddalurubhanuteja/",
+  "name": "Bhanu G",
+  "phone": "2342962422",
+  "q_auth_us": "yes",
+  "q_gender": "male",
+  "q_legal_location": "yes",
+  "q_min_qual": "yes",
+  "q_sponsorship": "no",
+  "qaPairs": [
+    {
+      "a": "Yes",
+      "q": "Are you currently in the United States"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently in a period"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently eligible to work"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently authorized"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently legally authorized"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you authorized"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you legally authorized"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you legally able to work"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you legally eligible"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you legally permitted"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you eligible"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you presently legally authorized"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you able to provide work authorization"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you able to perform"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you able to work on a daily basis"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have the legal right"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have authorization"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have the unrestricted right to work in the country to which you're applying?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you currently have the legal right"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you reside in the United States of America"
+    },
+    {
+      "a": "Yes",
+      "q": "Is your current U.S. work authorization"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have a bachelor's"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you hold a degree in a Science"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you certify you meet all minimum qualifications"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you meet all of the Basic Qualifications"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you meet the Preferred Qualifications"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have a high school"
+    },
+    {
+      "a": "Yes",
+      "q": "Can you confirm that you meet the minimum qualification"
+    },
+    {
+      "a": "Master's Degree",
+      "q": "What is the highest level of education you have completed?"
+    },
+    {
+      "a": "Yes",
+      "q": "Can you provide proof, "
+    },
+    {
+      "a": "Yes",
+      "q": "Are you willing to undergo a background"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you willing to submit a background"
+    },
+    {
+      "a": "Yes",
+      "q": "I understand that upon employment, proof of legal right to work in the US"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you willing to relocate"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you able to commit to coming into the office"
+    },
+    {
+      "a": "Yes",
+      "q": "If you are offered employment"
+    },
+    {
+      "a": "Yes",
+      "q": "If applicable, will you be willing to relocate"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you live"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you currently live in or are you able to relocate"
+    },
+    {
+      "a": "Yes",
+      "q": "Rokt is a hybrid company."
+    },
+    {
+      "a": "Yes",
+      "q": "This role is based out of our San Mateo, CA"
+    },
+    {
+      "a": "50",
+      "q": "Willingness to travel"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you over the age of 18"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you of legal age"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you at least 18"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you age 18"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you 18"
+    },
+    {
+      "a": "18 years of age and Over",
+      "q": "Please select your age"
+    },
+    {
+      "a": "No",
+      "q": "Will you require employer immigration sponsorship"
+    },
+    {
+      "a": "No",
+      "q": "Will you require future sponsorship"
+    },
+    {
+      "a": "No",
+      "q": "Will you now or in the future"
+    },
+    {
+      "a": "No",
+      "q": "Will you, now or"
+    },
+    {
+      "a": "No",
+      "q": "Will you now, or in the future"
+    },
+    {
+      "a": "No",
+      "q": "Will you need visa support"
+    },
+    {
+      "a": "No",
+      "q": "Do you now or in the future"
+    },
+    {
+      "a": "No",
+      "q": "At any time in the future"
+    },
+    {
+      "a": "F1",
+      "q": "Do you currently hold a Visa"
+    },
+    {
+      "a": "H1-B",
+      "q": "If yes, please choose the type of sponsorship from the below"
+    },
+    {
+      "a": "No",
+      "q": "General Motors will need to contact"
+    },
+    {
+      "a": "Have never been an employee",
+      "q": "Please select your Walmart Associate"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently or have you been under"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently or have you previously been employed"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently employed"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently working"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently under"
+    },
+    {
+      "a": "No",
+      "q": "Are you a current or former"
+    },
+    {
+      "a": "No",
+      "q": "Are you a current Starr employee"
+    },
+    {
+      "a": "No",
+      "q": "Have you worked"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever been or currently debarred by the U.S."
+    },
+    {
+      "a": "No",
+      "q": "Have you ever been employed"
+    },
+    {
+      "a": "I have not",
+      "q": "Have you ever worked"
+    },
+    {
+      "a": "No",
+      "q": "Have you previously been employed"
+    },
+    {
+      "a": "No",
+      "q": "Have you previously worked"
+    },
+    {
+      "a": "No",
+      "q": "Have you previously, or do you currently,"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever performed services"
+    },
+    {
+      "a": "No",
+      "q": "Are you bound"
+    },
+    {
+      "a": "No",
+      "q": "Have you entered in to an employee agreement"
+    },
+    {
+      "a": "No",
+      "q": "Have you entered into an employee agreement"
+    },
+    {
+      "a": "No",
+      "q": "Do you have an existing employment agreement or any continuing"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a relative"
+    },
+    {
+      "a": "No",
+      "q": "Do you have any relatives"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a family member"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a second job"
+    },
+    {
+      "a": "No",
+      "q": "Were you referred for this"
+    },
+    {
+      "a": "No",
+      "q": "Are you related to a Senior Government Official"
+    },
+    {
+      "a": "No",
+      "q": "Do you have any close or intimate personal"
+    },
+    {
+      "a": "No",
+      "q": "As a U.S. federal government employee"
+    },
+    {
+      "a": "No",
+      "q": "Are you a spouse"
+    },
+    {
+      "a": "No",
+      "q": "Are you a current employee of a subsidiary"
+    },
+    {
+      "a": "No",
+      "q": "Do you currently work for"
+    },
+    {
+      "a": "No",
+      "q": "Are any of immediate family"
+    },
+    {
+      "a": "No",
+      "q": "Is any family member a Penn employee"
+    },
+    {
+      "a": "No",
+      "q": "Are you the Spouse/Partner of someone"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a direct family member"
+    },
+    {
+      "a": "No",
+      "q": "Are you related to a current employee"
+    },
+    {
+      "a": "Male",
+      "q": "Gender "
+    },
+    {
+      "a": "Male",
+      "q": "What is your gender"
+    },
+    {
+      "a": "Male",
+      "q": "What is your gender"
+    },
+    {
+      "a": "Male",
+      "q": "Please select your gender"
+    },
+    {
+      "a": "Man",
+      "q": "How would you describe your gender"
+    },
+    {
+      "a": "Male",
+      "q": "Please indicate your gender"
+    },
+    {
+      "a": "Mr",
+      "q": "Title"
+    },
+    {
+      "a": "Yes",
+      "q": "Asian"
+    },
+    {
+      "a": "Asian",
+      "q": "Race"
+    },
+    {
+      "a": "Asian",
+      "q": "What is your Race"
+    },
+    {
+      "a": "Asian",
+      "q": "What is / are your race(s)"
+    },
+    {
+      "a": "Asian",
+      "q": "Please select your race:"
+    },
+    {
+      "a": "Asian",
+      "q": "Please select your ethnicity."
+    },
+    {
+      "a": "Asian",
+      "q": "Please select the ethnicity"
+    },
+    {
+      "a": "Asian",
+      "q": "Please indicate your ethnicity"
+    },
+    {
+      "a": "South Asian",
+      "q": "How would you describe your racial"
+    },
+    {
+      "a": " I don't wish",
+      "q": "How would you describe your sexual"
+    },
+    {
+      "a": "No",
+      "q": "Do you identify as transgender"
+    },
+    {
+      "a": "No",
+      "q": "Are you Hispanic"
+    },
+    {
+      "a": "No",
+      "q": "Hispanic or Latino"
+    },
+    {
+      "a": "No",
+      "q": "Do you identify as Hispanic"
+    },
+    {
+      "a": "No",
+      "q": "Veteran"
+    },
+    {
+      "a": "I am not",
+      "q": "Veteran Status"
+    },
+    {
+      "a": "I am not",
+      "q": "VeteranStatus"
+    },
+    {
+      "a": "No",
+      "q": "Are you a veteran"
+    },
+    {
+      "a": "No",
+      "q": "Are you a Military spouse"
+    },
+    {
+      "a": "I am not",
+      "q": "What is your veteran"
+    },
+    {
+      "a": "I am not",
+      "q": "Please confirm your veteran status"
+    },
+    {
+      "a": "I am not",
+      "q": "Are you a US Military Veteran"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently a member"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently serving,"
+    },
+    {
+      "a": "No",
+      "q": "Disability"
+    },
+    {
+      "a": "No",
+      "q": "Disability Status"
+    },
+    {
+      "a": "No",
+      "q": "Please select your disability"
+    },
+    {
+      "a": "No",
+      "q": "Please check one of the boxes"
+    },
+    {
+      "a": "No",
+      "q": "If you believe you belong to any of the categories"
+    },
+    {
+      "a": "I AM NOT",
+      "q": "If you believe you belong to any of the categories"
+    },
+    {
+      "a": "No",
+      "q": "The following questions are to assist Walmart"
+    },
+    {
+      "a": "No",
+      "q": "Please answer the next two questions"
+    },
+    {
+      "a": "Yes",
+      "q": "This Interview Non-Disclosure Agreement"
+    },
+    {
+      "a": "Mobile",
+      "q": "Phone Device Type"
+    },
+    {
+      "a": "Mobile",
+      "q": "Device Type"
+    },
+    {
+      "a": "Opt-Out from receiving text messages",
+      "q": "Would you like to receive mobile"
+    },
+    {
+      "a": "No",
+      "q": "Would you like to receive SMS"
+    },
+    {
+      "a": "No",
+      "q": "General Motors will need to contact"
+    },
+    {
+      "a": "Yes",
+      "q": "Checking the checkbox"
+    },
+    {
+      "a": "Yes",
+      "q": "Signature"
+    },
+    {
+      "a": "Yes",
+      "q": "Yes, I understand"
+    },
+    {
+      "a": "Yes",
+      "q": "By checking this box,"
+    },
+    {
+      "a": "Yes",
+      "q": "Yes, I consent"
+    },
+    {
+      "a": "Yes",
+      "q": "Yes, I have read and consent"
+    },
+    {
+      "a": "3 years to ",
+      "q": "Which option best describes your total non-internship professional software development experience"
+    },
+    {
+      "a": "United States",
+      "q": "Country/Region of Residence:"
+    },
+    {
+      "a": "Masters",
+      "q": "What is the highest level of education you have"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have a legal right to work"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a commitment to any employer"
+    },
+    {
+      "a": "Yes",
+      "q": "Is this acceptable to you?"
+    },
+    {
+      "a": "Not",
+      "q": "Ethnicity"
+    },
+    {
+      "a": "Asian",
+      "q": "What is your race"
+    },
+    {
+      "a": "I agree",
+      "q": "I accept and agree to the terms and conditions stated"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently on OPT"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you open to working in person in our San Francisco or New York office 2-3 times a week?"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you open to relocation"
+    },
+    {
+      "a": "No",
+      "q": "Do you consent to receiving text messages"
+    },
+    {
+      "a": "No",
+      "q": "Are you a former/current intern"
+    },
+    {
+      "a": "Yes",
+      "q": "I authorize Tesla to consider me"
+    },
+    {
+      "a": "Yes",
+      "q": "I have read and understand the statements"
+    },
+    {
+      "a": "No",
+      "q": "Will you now or could you in the future"
+    },
+    {
+      "a": "No",
+      "q": "Government Employment: In the last 5"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently or have you in the past"
+    },
+    {
+      "a": "No",
+      "q": "As a U.S. company that exports software and technology"
+    },
+    {
+      "a": "Yes",
+      "q": "Regarding future positions at Salesforce"
+    },
+    {
+      "a": "I am not",
+      "q": "Veterans*"
+    },
+    {
+      "a": "Asian",
+      "q": "Ethnicity*"
+    },
+    {
+      "a": "No",
+      "q": "Do you have an immediate family member"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you of legal age to work"
+    },
+    {
+      "a": "Under 30",
+      "q": "What is your current age"
+    },
+    {
+      "a": "No",
+      "q": "Do you require sponsorship to legally work in the job location?"
+    },
+    {
+      "a": "I am neither",
+      "q": "Are you a US veteran, and if so, do you belong to any of the categories of protected statuses listed here"
+    },
+    {
+      "a": "Man",
+      "q": "What best describes your gender"
+    },
+    {
+      "a": "South Asian",
+      "q": "Please select up to 2 ethnicities that you most closely identify with"
+    },
+    {
+      "a": "I don't",
+      "q": "What sexual orientation do you most closely identify with?"
+    },
+    {
+      "a": "No",
+      "q": "Are you a person of transgender experience? "
+    },
+    {
+      "a": "Man",
+      "q": "What gender identity do you most closely identify with?"
+    },
+    {
+      "a": "No",
+      "q": "Are you now, or have you been in the last five years, employed by any entity of the federal, state or local government?"
+    },
+    {
+      "a": "No",
+      "q": "Have you been employed"
+    },
+    {
+      "a": "No",
+      "q": "Have you previously worked"
+    },
+    {
+      "a": "No",
+      "q": "Will you now (or in the future)"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a non-compete agreement"
+    },
+    {
+      "a": "No",
+      "q": "Do you currently or have you previously worked"
+    },
+    {
+      "a": "Yes",
+      "q": "This position requires regular in-office work at our Seattle locatio"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you authorized to work"
+    },
+    {
+      "a": "No",
+      "q": "* To the best of your knowledge and belief,"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you interact with Dell Technologies Personnel"
+    },
+    {
+      "a": "No",
+      "q": "Is your current employer a reseller"
+    },
+    {
+      "a": "No",
+      "q": "I am currently or have been employed by the U.S. Government?"
+    },
+    {
+      "a": "No",
+      "q": "I am currently or have been employed by State or Local Government?"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever been involuntarily discharged or separated from a job?"
+    },
+    {
+      "a": "No",
+      "q": "By submitting this application for employment, I agree that McAfee, LLC has"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently subject to a non-compete or non-solicitation"
+    },
+    {
+      "a": "No",
+      "q": "Are you related to anyone currently employed"
+    },
+    {
+      "a": "I have not",
+      "q": "Have you ever worked at Adobe in the following capacity"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you open to being in-office 5 days a week in Sunnyvale?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you possess the ability to work without restriction and without interruption in the future?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you acknowledge that Bloomberg Industry Group requires 4 days"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently or have you ever been a Driver, delivered with Uber Eats,"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you open to being considered for other roles?"
+    },
+    {
+      "a": "No,",
+      "q": "Please check one of the boxes below"
+    },
+    {
+      "a": "Asian",
+      "q": "Please select the race/ethnicity with which you most identify"
+    },
+    {
+      "a": "Male",
+      "q": "Please select the gender with which you most identify"
+    },
+    {
+      "a": "No",
+      "q": "Will you now or in the future require our sponsorship"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have the legal right to work in the country for which you're applying?"
+    },
+    {
+      "a": "No",
+      "q": "Are you currently employed by one of Uber’s subsidiaries?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you reside in the United States?"
+    },
+    {
+      "a": "Yes",
+      "q": "Check to skip"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you at least 18 years of age?"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently legally authorized to work in the United States?"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you either a US citizen or an alien lawfully authorized to work in the US?"
+    },
+    {
+      "a": "No",
+      "q": "If you have been employed by Certara or any of its divisions in the past, please indicate which division. Please select"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever been previously employed"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have 3+ years"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you currently eligible to work in the United States of America?"
+    },
+    {
+      "a": "No",
+      "q": "Do you now, or will you in the future, require sponsorship"
+    },
+    {
+      "a": "No",
+      "q": "Are you subject to any restrictive covenants,"
+    },
+    {
+      "a": "No",
+      "q": "Are you a current contractor at any"
+    },
+    {
+      "a": "No",
+      "q": "Do you have relatives"
+    },
+    {
+      "a": "Master",
+      "q": "What is the highest degree"
+    },
+    {
+      "a": "Yes",
+      "q": "This position requires you to work"
+    },
+    {
+      "a": "Master",
+      "q": "1. What is your highest level of completed education?"
+    },
+    {
+      "a": "Yes",
+      "q": "Have you contributed to projects where AI/ML"
+    },
+    {
+      "a": "Yes",
+      "q": "Have you built CLI tools or IDE extensions/plugins before?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have experience developing"
+    },
+    {
+      "a": "Yes",
+      "q": "Have you built and maintained developer tools that are used by other engineers?"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever interviewed at Anthropic before?"
+    },
+    {
+      "a": "No",
+      "q": "Do you require visa sponsorship?"
+    },
+    {
+      "a": "No",
+      "q": "Will you now or will you in the future require employment visa sponsorship"
+    },
+    {
+      "a": "Yes",
+      "q": "Will you now or will you in the future require employment visa sponsorshipWe believe that AI will have a transformative impact on the world,"
+    },
+    {
+      "a": "Yes",
+      "q": "Are you open to working in-person in one of our offices 25% of the time?"
+    },
+    {
+      "a": "Yes",
+      "q": "AI Policy for Application"
+    },
+    {
+      "a": "No",
+      "q": "Will you need a visa sponsorship?"
+    },
+    {
+      "a": "No",
+      "q": "Sponsorship: Do you require sponsorship,"
+    },
+    {
+      "a": "No",
+      "q": "Do you have a disability or chronic condition (physical, visual, auditory, cognitive, mental,"
+    },
+    {
+      "a": "No",
+      "q": "Do you currently, or have you previously, worked at Capital One or a company acquired by Capital One as an employee, contractor, consultant, or temp?"
+    },
+    {
+      "a": "Not applicable",
+      "q": "If you are not currently located in the posted location,"
+    },
+    {
+      "a": "Yes",
+      "q": "By continuing, you agree"
+    },
+    {
+      "a": "No",
+      "q": "Are you related to an employee"
+    },
+    {
+      "a": "No",
+      "q": "Are there any criminal charges pending against you?"
+    },
+    {
+      "a": "No",
+      "q": "Have you ever been convicted of any crime?"
+    },
+    {
+      "a": "kent",
+      "q": "Location (City)"
+    },
+    {
+      "a": "Regular",
+      "q": "I am looking for the following kind of job"
+    },
+    {
+      "a": "Full-Time",
+      "q": "I want to work the following kind of employment"
+    },
+    {
+      "a": "Up to 50% of the time",
+      "q": "I am willing to travel"
+    },
+    {
+      "a": "Yes",
+      "q": "*1. Do you have a Bachelor's Degree in a field related to this position?"
+    },
+    {
+      "a": "Yes",
+      "q": "Do you have one year or more of applicable job related experience in this field?"
+    },
+    {
+      "a": "No",
+      "q": "Are you, or will you be by the time of hire,"
+    }
+  ],
+  "summary": "",
+  "textQaPairs": []
+}

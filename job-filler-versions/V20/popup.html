@@ -1,0 +1,203 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 12px; width: 400px; }
+    h1 { margin: 0 0 8px; font-size: 16px; }
+    h2 { margin: 12px 0 6px; font-size: 13px; color: #111827; }
+    label { display: block; font-size: 12px; margin-top: 8px; }
+    input, textarea, select {
+      width: 100%; box-sizing: border-box; padding: 6px; font-size: 13px;
+      border: 1px solid #ccc; border-radius: 6px; background: #fff;
+    }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    button {
+      margin-top: 10px; width: 100%; padding: 9px; border: 0; border-radius: 8px;
+      background: #111827; color: #fff; cursor: pointer; font-weight: 600;
+    }
+    .secondary { background: #334155; }
+    .danger { background: #b91c1c; }
+    .hint { font-size: 11px; color: #666; margin-top: 6px; }
+    .card {
+      margin-top: 10px; padding: 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fafafa;
+    }
+
+    /* Export/Import buttons beside title */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .header-buttons button {
+      background: #f3f4f6;
+      color: #111827;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-size: 12px;
+      padding: 3px 8px;
+      margin-left: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .header-buttons button:hover {
+      background: #e5e7eb;
+    }
+    #toast-msg {
+      pointer-events: none;
+    }
+    
+
+    /* ---- Reorder UX ---- */
+    .badge {
+      display: inline-block;
+      margin: 4px 0 6px;
+      font-size: 11px;
+      color: #374151;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 9999px;
+      padding: 2px 8px;
+    }
+    .qa-row {
+      display: grid;
+      grid-template-columns: 24px 1fr 1fr auto; /* 24px for the drag handle */
+      gap: 6px;
+      align-items: end;
+      margin-top: 6px;
+      cursor: move;               /* entire row feels draggable */
+      transition: background 80ms ease;
+    }
+    .qa-row.dragging {
+      opacity: 0.9;
+      background: #fff7ed;        /* light orange */
+      outline: 2px dashed #f59e0b;
+      border-radius: 8px;
+    }
+    .handle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 32px;
+      margin-right: 2px;
+      border-radius: 6px;
+      background: #f3f4f6;
+      user-select: none;
+      font-size: 14px;
+      color: #6b7280;
+    }
+    .handle:active { background: #e5e7eb; }
+
+    /* small text below sections */
+    .muted { font-size: 11px; color: #555; margin-top: 4px; }
+
+    /* Movable reorder hint that can be dropped between rows */
+    .reorder-hint {
+      display: block;
+      margin: 6px 0;
+      text-align: center;
+      font-size: 11px;
+      color: #374151;
+      background: #eef2ff;
+      border: 1px solid #c7d2fe;
+      border-radius: 9999px;
+      padding: 3px 10px;
+      cursor: grab;
+      user-select: none;
+    }
+    .reorder-hint.dragging-hint {
+      opacity: 0.9;
+      outline: 2px dashed #6366f1;
+      background: #e0e7ff;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- ✅ Only one Job Filler title -->
+  <div class="header">
+    <h1>Job Filler</h1>
+    <div class="header-buttons">
+      <button id="exportBtn" class="secondary" style="margin-right:4px;width:auto;padding:5px 10px;">Export Data</button>
+      <button id="importBtn" class="secondary" style="width:auto;padding:5px 10px;">Import Data</button>
+      <button id="resetBtn" class="secondary" style="width:auto;padding:5px 10px;">Reset All</button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div>
+      <label>Name</label>
+      <input id="name" placeholder="Your name" />
+    </div>
+    <div>
+      <label>Email</label>
+      <input id="email" placeholder="you@example.com" />
+    </div>
+  </div>
+
+  <label>Phone</label>
+  <input id="phone" placeholder="+1 (555) 555-5555" />
+
+  <label>Address</label>
+  <input id="address" placeholder="123 Main St, City, ST" />
+
+  <label>LinkedIn URL</label>
+  <input id="linkedin" placeholder="https://linkedin.com/in/yourprofile" />
+
+  <label>GitHub URL</label>
+  <input id="github" placeholder="https://github.com/yourhandle" />
+
+  <label>Pasteable Summary (optional)</label>
+  <textarea id="summary" rows="3" placeholder="Short summary to paste..."></textarea>
+
+  <!-- TEXT Q/A -->
+  <div class="card">
+    <h2>Additional information (from YOU) — Text fields</h2>
+    <!-- <div class="badge">Drag rows to reorder — autosaves</div> -->
+    <div id="textQaList"></div>
+    <div class="qa-row" style="grid-template-columns: 1fr 1fr auto; cursor: default;">
+      <div>
+        <label>Question (exact/partial as shown on page)</label>
+        <input id="tqa_new_q" placeholder='e.g., "Explain relevant experience"' />
+      </div>
+      <div>
+        <label>Answer (text to type)</label>
+        <input id="tqa_new_a" placeholder='e.g., "5+ years in ML pipelines..."' />
+      </div>
+      <button id="tqa_add">Add</button>
+    </div>
+    <div class="muted">We’ll find the matching question and type your answer into the nearest text field/textarea.</div>
+  </div>
+
+  <!-- CHOICE Q/A -->
+  <div class="card">
+    <h2>Checkbox/Radio/Select (from YOU)</h2>
+    <!-- <div class="badge">Drag rows to reorder — autosaves</div> -->
+    <div id="qaList"></div>
+    <div class="qa-row" style="grid-template-columns: 1fr 1fr auto; cursor: default;">
+      <div>
+        <label>Question (exact/partial as shown on page)</label>
+        <input id="qa_new_q" placeholder='e.g., "Are you legally able to work...?"' />
+      </div>
+      <div>
+        <label>Answer (option text)</label>
+        <input id="qa_new_a" placeholder='e.g., "Yes" or "No" or "Male"' />
+      </div>
+      <button id="qa_add">Add</button>
+    </div>
+    <div class="muted">We’ll click/select the option that matches your answer.</div>
+  </div>
+
+  <button id="saveBtn">Save</button>
+  <button id="fillBtn" class="secondary">Fill Application On This Page</button>
+
+  <div class="hint">
+    Tip: Assign <b>Alt+2</b> here if not set yet → <code>chrome://extensions/shortcuts</code>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
