@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Job Filler",
+  "version": "22.0.0",
+  "description": "Save your info and fill job application forms. Alt+2 fills the form instantly.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "action": { "default_popup": "popup.html" },
+  "background": { "service_worker": "background.js" },
+  "commands": {
+    "fill-form": {
+      "suggested_key": { "default": "Alt+2" },
+      "description": "Fill the application form on the current page"
+    },
+    "capture-choice-question": {
+      "suggested_key": { "default": "Alt+4" },
+      "description": "Capture selected text and paste into CHOICE Q/A question field"
+    }
+  }
+}
