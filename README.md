@@ -196,7 +196,7 @@ Implementated
 4. page-up and page-down button
 5. Add new question button
 
-ths version V22:
+ths version V22: https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V22
 
 Implementated
 1. Command "Alt+4" to auto trigger, by adding new question with defalt no.
