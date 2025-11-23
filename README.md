@@ -177,12 +177,27 @@ In just **8 hours**, this small idea turned into a fully working **Job Applicati
 
 Version control and important information:
 
-the version 20: 
+the version 20:  https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V20
 
 Implementated
-
 1. Filling all most all forms, have save, load, reset form.
 2. Change Question oder {Drag and drop}
 3. Fixed Categories names, where order can change {drag and drop}
 4. Auto Save when we add new question, or change of order only in select options
-https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V20
+
+
+
+this version V21: https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V21
+
+Implementated
+1. Updated Ui where keep the choice q/a top
+2. add/save question kept at the top
+3. add new question at bottom
+4. page-up and page-down button
+5. Add new question button
+
+ths version V22:
+
+Implementated
+1. Command "Alt+4" to auto trigger, by adding new question with defalt no.
+2. Show the popup added
