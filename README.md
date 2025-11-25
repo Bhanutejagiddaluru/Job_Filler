@@ -178,6 +178,7 @@ In just **8 hours**, this small idea turned into a fully working **Job Applicati
 Version control and important information:
 
 Version 20:  https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V20
+
 Implementated
 1. Filling all most all forms, have save, load, reset form.
 2. Change Question oder {Drag and drop}
@@ -185,6 +186,7 @@ Implementated
 4. Auto Save when we add new question, or change of order only in select options
 
 Version V21: https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V21
+
 Implementated
 1. Updated Ui where keep the choice q/a top
 2. add/save question kept at the top
@@ -193,16 +195,19 @@ Implementated
 5. Add new question button
 
 Version V22: https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V22
+
 Implementated
 1. Command "Alt+4" to auto trigger, by adding new question with defalt no.
 2. Show the popup added
 
 Version V23: https://github.com/Bhanutejagiddaluru/Job_Filler/tree/main/job-filler-versions/V23
+
 Implementation:
 SQDA - single Question Different Answer HTML and popup.js
 but background is not filling the these question
 
 Version V23.1 [Failed] but have some implementation good:
+
 Implementation:
 1. Alt + 5, to show the disable status options, i want to know wheather we can able to read the options available in select choice q/a in the given website so i made this test it is working.
 2. I changed the logic of Alt + 4, to paste the new question, answer need to paste from the selected choice Q/A. but this is not working.
